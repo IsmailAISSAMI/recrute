@@ -1,4 +1,5 @@
-export const Landing = () => {
-  throw new Error('Test error in LandingPage');
-  return <div>landing page hello</div>;
+const Landing = () => {
+  return <div>landing page </div>;
 };
+
+export default Landing;
