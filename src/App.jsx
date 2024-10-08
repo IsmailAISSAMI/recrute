@@ -1,9 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { ErrorBoundary } from 'react-error-boundary';
 import { AppLayout } from './layouts/App.layout';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
-import { ErrorFallback } from './components/ErrorFallback';
 import './App.css';
 
 const LandingPage = lazy(() => import('./pages/Landing.page'));
@@ -21,11 +19,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Suspense fallback={<LoadingSpinner />}>
-        <RouterProvider router={router} />
-      </Suspense>
-    </ErrorBoundary>
+    <Suspense fallback={<LoadingSpinner />}>
+      <RouterProvider router={router} />
+    </Suspense>
   );
 }
 
