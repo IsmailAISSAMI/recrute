@@ -1,11 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { AppLayout } from './layouts/App.layout';
-import { LoadingSpinner } from './components/ui/LoadingSpinner';
+import { LoadingSpinner } from './components/ui/loading-spinner';
 import './App.css';
+import { ThemeProvider } from './components/theme-provider';
 
-const LandingPage = lazy(() => import('./pages/Landing.page'));
-const OnBoarding = lazy(() => import('./pages/OnBoarding.page'));
+const LandingPage = lazy(() => import('./pages/landing.page'));
+const OnBoarding = lazy(() => import('./pages/on-boarding.page'));
 
 const router = createBrowserRouter([
   {
@@ -19,9 +20,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+      <Suspense fallback={<LoadingSpinner />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </ThemeProvider>
   );
 }
 
