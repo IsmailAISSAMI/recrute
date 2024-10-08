@@ -46,4 +46,4 @@ const ThemeProvider = ({
   );
 };
 
-export { ThemeProvider };
+export { ThemeProvider, ThemeProviderContext };
